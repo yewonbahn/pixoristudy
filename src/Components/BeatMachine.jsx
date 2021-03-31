@@ -9,7 +9,7 @@ const BeatMachine = () => {
 
     return(
       <>
-        <div className="beatMachineTitle"><span className="beat">Beat</span><span className="juice">Juice</span></div>
+        <div className="beatMachineTitle"><span className="beat">Flow </span><span className="juice">Pixorie</span></div>
         {/* <PlayButton /> */}
       </>
     )

@@ -1,4 +1,6 @@
 // objects to represent each instrument
+
+
 export const instruments = [
   { name: 'Clap', sound: "./DrumSamples/Claps/Clap1.wav", pattern: {0: false, 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false, 10: false, 11: false, 12: false, 13: false, 14: false, 15: false }, color: '#b50000' },
   { name: 'Hi-hat (open)', sound: "./DrumSamples/OpenHats/OpenHiHat01.wav", pattern: {0: false, 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false, 10: false, 11: false, 12: false, 13: false, 14: false, 15: false }, color: '#bcc200' },
@@ -8,7 +10,6 @@ export const instruments = [
   { name: 'Kick', sound: "./DrumSamples/Kicks/KickDrum01.wav", pattern: {0: false, 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false, 10: false, 11: false, 12: false, 13: false, 14: false, 15: false }, color: '#00990a' },
   { name: 'Bassline', sound: "./BassSamples/HighE-BassNote.wav", pattern: {0: false, 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false, 10: false, 11: false, 12: false, 13: false, 14: false, 15: false }, color: 'blue' }
 ]
-
  // returns different sound pointer depending on the position of the counter on the grid
  export function getBassNote(position) {
   if(position >= 14) {
@@ -30,7 +31,7 @@ export const instruments = [
     return "./BassSamples/D-BassNote.wav";
   }
   if(position >= 2){
-    return "./BassSamples/B-BassNote.wav";   
+    return "./BassSamples/HighE-BassNote.wav";   
   }
   if(position >= 0){
     return "./BassSamples/HighE-BassNote.wav";  

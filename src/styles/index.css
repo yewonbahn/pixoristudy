@@ -15,17 +15,14 @@
   padding: 20px;
   margin: auto;
   width: 60%;
-  background-color: #bd1a74;
-  box-shadow: 10px 10px #222222ad;
-  background-image: url('https://www.transparenttextures.com/patterns/cartographer.png');
 }
 
 body {
-  background-color: #604222;
+  background-color: #f7f7f7;
   font-family: 'Cabin', sans-serif;
   font-size: 20px;
   color: white;
-  background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+
 }
 
 input {

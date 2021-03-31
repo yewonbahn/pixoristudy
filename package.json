@@ -18,7 +18,10 @@
     "@testing-library/user-event": "^7.1.2",
     "howler": "^2.2.1",
     "react": "^16.13.1",
+    "react-color": "^2.19.3",
+    "react-component-export-image": "^1.0.5",
     "react-dom": "^16.13.1",
+    "react-jss": "^10.6.0",
     "react-scripts": "3.4.1"
   },
   "eslintConfig": {

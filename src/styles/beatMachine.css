@@ -1,14 +1,14 @@
 .beatMachineTitle {
-  font-size: 60px;
+  font-size: 40px;
   font-weight: 700;
   font-family: "Cabin", sans-serif;
-  margin-right: 20px;
+  
 }
 .beat {
-  color: #db504a;
-  text-shadow: 2px 2px 4px #254441;
+  color: #2e2b2b;
+
 }
 .juice {
-  color: #fdc500;
-  text-shadow: 2px 2px 8px #000000;
+  color: #000000;
+ 
 }

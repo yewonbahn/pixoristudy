@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState ,useMemo} from 'react';
 import './styles/index.css';
 import './styles/playhead.css';
 import BeatMachine from './Components/BeatMachine';
@@ -11,8 +11,45 @@ import PlayButton from './Components/PlayButton';
 import StopButton from './Components/StopButton';
 import Volume from './Components/Volume';
 import { Howl } from 'howler';
+import Editor from "./Editor";
+import useStyles from './App.styles';
+import Colorbutton from "./colorbutton";
+import { Fragment } from 'react';
+import { CirclePicker } from "react-color";
+import DrawingPanel from "./DrawingPanel";
+import { SketchPicker } from 'react-color';
+import { SwatchesPicker } from 'react-color';
+import ColorPicker from './Components/ColorPicker.js';
+import Grid from './Components/Grid';
+const offCell = {
+  on: false,
+  color: '#000000',
+};
+const initialCells = Array.from({ length: 40 }, () => offCell);
 
 const App = () => {
+
+  const [hideDrawingPanel, setHideDrawingPanel] = useState(true);
+  const [cells, setCells] = useState(initialCells);
+  const [selectedColor, setColor] = useState("000000");
+
+  const classes = useStyles();
+  const colorSwatch = useMemo(
+    () => [
+      ...new Set(cells.filter((cell) => cell.on).map((cell) => cell.color)),
+    ],
+    [cells]
+  );
+
+  const chatString = useMemo(
+    () => cells.map((cell) => cell.color.slice(1)).join(','),
+    [cells]
+  );
+
+
+  function changeColor(color) {
+    setColor(color.hex);
+  }
   //beat machine initial states
   const [isPlaying, setIsPlaying] = useState(false);
   const [tempo, setTempo] = useState(120);
@@ -198,21 +235,24 @@ const App = () => {
     }
     resetSquares();
   }, [isPlaying, beats, volNum, counter]);
+ 
 
   //Map each instrumentRow onto the beat machine
-  const instrumentRows = instruments.map((instrument, row) => {
+  const instrumentRows = instruments.map((instrument, row ) => {
     return (
       <InstrumentRow
+      
         key={row}
         row={row}
         updateGrid={(row, column, toggle) => updateGrid(row, column, toggle)}
         instrumentName={instrument.name}
         instrumentSound={instrument.sound}
         pattern={instrument.pattern}
-        instrumentColor={instrument.color}
+        instrumentColor={selectedColor}
       />
     );
   });
+  
 
   //Conditionally Render Playhead if isPlaying
   const playHead = () => {
@@ -246,21 +286,25 @@ const App = () => {
         </>
       );
     }
+
+
   };
+
+  
+
+
+
+
   //store playHeadComponent in a variable for readability
   const playHeadComponent = playHead();
 
   //App returns the composite of our beat machine and components
   return (
+    <Fragment>
     <div className="container">
       <div className="titleImg">
         <BeatMachine />
-        <img
-          src="https://www.pngkey.com/png/full/237-2373068_linuxserver-beets-cartoon-beet-png.png"
-          alt="beetJuice logo"
-          width="200"
-          height="200"
-        ></img>
+ 
       </div>
       <div className="btnGroup">
         <PlayButton onClick={togglePlay} isPlaying={isPlaying} />
@@ -279,7 +323,36 @@ const App = () => {
             }}
           />
         </div>
+        <div id="a">
+    
+      {hideDrawingPanel}
+
+
+
+
+          {/* <SwatchesPicker color={selectedColor} onChangeComplete={changeColor} />  */}
+
+       
+      <ColorPicker  color={selectedColor} onChangeComplete={changeColor} onSetColor={setColor} />
+      <div className={classes.colorSwatchContainer}>
+        {colorSwatch.map((color) => (
+          <div
+            key={color}
+            onClick={() => setColor(color)}
+            className={classes.colorSwatch}
+            style={{ background: color }}
+          />
+        ))}
       </div>
+
+    
+ 
+    </div>
+
+      </div>
+
+
+
       <br />
       <table border="0">
         <tbody>
@@ -289,7 +362,19 @@ const App = () => {
         </tbody>
       </table>
     </div>
+
+    <p className={classes.chatString}>
+        {/* eslint-disable-next-line */}
+        !rgb
+        {' '}
+        {chatString}
+      </p>
+      console.log({chatString})
+    </Fragment>
   );
+
+
+  
 };
 
 export default App;
