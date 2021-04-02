@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import '../styles/index.css';
 import { Howl, Howler } from 'howler';
 import { getBassNote } from '../helpers/instruments'
-
+import { Fragment } from 'react';
+const arr1 = Array.from(Array(7), () => new Array(16).fill(0));
 const Square = (props) => {
   const { selectedColor } = props.color;
 
@@ -11,7 +12,8 @@ const Square = (props) => {
   const [canChangeColor, setCanChangeColor] = useState(true);
 
   const [toggle, setToggle] = useState(false);
-
+ 
+ 
 
  
 
@@ -31,9 +33,11 @@ const Square = (props) => {
     }
     setPixelColor(props.color);
     setCanChangeColor(false);
-
+    
     // need to pass row, col, toggle back up to the grid in App.js
     props.updateGrid(props.row, props.column, !toggle);
+    arr1[props.row].splice(props.column,1,props.color)
+    console.log(arr1)
   }
 
   function resetColor() {
@@ -52,15 +56,21 @@ const Square = (props) => {
   
   //TODO: Move in-line styles out of components
   return (
+    <React.Fragment>
+
     <td className="tCell"
       style={toggle ? { background: pixelColor, padding: '34px' } : { background: '#fffff7', padding: '34px' }}
+    
       onClick={() =>{ handleClick();}}
 
       onMouseEnter={changeColorOnHover}
-      onMouseLeave={resetColor}
+      onMouseLeave={resetColor}/>
+      
+      </React.Fragment>
+ 
 
-    />
-  )
+    )
+  
     }
 
 export default Square;
