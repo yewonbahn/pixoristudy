@@ -6,8 +6,9 @@
 }
 
 .inactive {
+
   background-color: rgb(155, 133, 133);
-  padding: 25px;
+  padding: 20px;
   opacity: 0.5;
   border-radius: 3px;
 }

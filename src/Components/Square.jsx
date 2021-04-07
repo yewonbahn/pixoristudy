@@ -3,7 +3,8 @@ import '../styles/index.css';
 import { Howl, Howler } from 'howler';
 import { getBassNote } from '../helpers/instruments'
 import { Fragment } from 'react';
-const arr1 = Array.from(Array(7), () => new Array(16).fill(0));
+const arr1 = Array.from(Array(16), () => new Array(32).fill(0));
+
 const Square = (props) => {
   const { selectedColor } = props.color;
 
@@ -59,7 +60,7 @@ const Square = (props) => {
     <React.Fragment>
 
     <td className="tCell"
-      style={toggle ? { background: pixelColor, padding: '34px' } : { background: '#fffff7', padding: '34px' }}
+      style={toggle ? { background: pixelColor, padding: '22px' } : { background: '#fffff7', padding: '22px' }}
     
       onClick={() =>{ handleClick();}}
 

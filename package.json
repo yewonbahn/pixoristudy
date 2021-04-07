@@ -2,7 +2,7 @@
   "name": "react-gh-pages",
   "description": "This project was generated from the Mintbean react template using the mintbean-cli tool.",
   "version": "0.1.0",
-  "homepage": ".",
+  "homepage": "http://.",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
@@ -40,5 +40,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kwklly/pixoriestudy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kwklly/pixoriestudy/issues"
   }
 }

@@ -45,6 +45,7 @@ td.instrument {
   background-color: #bd1a7486;
   border: 1px solid black;
   border-radius: 5px;
+ 
 }
 
 .volTempo {
@@ -80,6 +81,8 @@ td.instrument {
 }
 .tCell {
   border-radius: 3px;
+  width: 5px;
+  height: 5px;
 }
 
 .volIcon {
@@ -109,4 +112,11 @@ td.instrument {
   .container {
     width: 95%;
   }
+}
+
+.table {
+  position: absolute;
+  left:10px
+
+
 }

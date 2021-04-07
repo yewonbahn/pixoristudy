@@ -8,21 +8,18 @@ for (let i = 1; i <= 16; i++) {
 
 const beatLabels = [];
 let b = 1;
-for (let i = 1; i <= 16; i++) {
+for (let i = 1; i <= 32; i++) {
 
-  if((i - 1) % 4 === 0) {
+ 
     beatLabels.push(<td key={i} className='instrument'>{b}</td>);
     b++;
-  } else {
-    beatLabels.push(<td key={i} className='instrument'></td>);
-  }
+  
 }
 
 const BeatLabel = () => {
 
   return (
     <>
-      
       <tr>
       <td className='instrument'></td>  
         {beatLabels}

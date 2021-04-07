@@ -21,6 +21,7 @@ import { SketchPicker } from 'react-color';
 import { SwatchesPicker } from 'react-color';
 import ColorPicker from './Components/ColorPicker.js';
 import Grid from './Components/Grid';
+
 const offCell = {
   on: false,
   color: '#000000',
@@ -55,43 +56,9 @@ const App = () => {
   const [tempo, setTempo] = useState(120);
   const [volNum, setVolNum] = useState(50);
   // state tracking for playhead when isPlaying
-  const [squares, setSquares] = useState([
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-  ]);
+  const [squares, setSquares] = useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,]);
   // state tracking for our dumb component when !isPlaying
-  const [playHeadArray, setPlayHeadArray] = useState([
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-  ]);
+  const [playHeadArray, setPlayHeadArray] = useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,]);
   const [counter, setCounter] = useState(0);
   // holds on off state for each row of instruments
   const [grid, setGrid] = useState([
@@ -102,6 +69,15 @@ const App = () => {
     instruments[4].pattern,
     instruments[5].pattern,
     instruments[6].pattern,
+    instruments[7].pattern,
+    instruments[8].pattern,
+    instruments[9].pattern,
+    instruments[10].pattern,
+    instruments[11].pattern,
+    instruments[12].pattern,
+    instruments[13].pattern,    
+    instruments[14].pattern,
+    instruments[15].pattern,
   ]);
 
   // TODO: Refactor player controls into helpers
@@ -127,7 +103,7 @@ const App = () => {
   //helper function for playHeadLoop()
   const getPreviousSquare = () => {
     if (counter === 0) {
-      return document.getElementById('15');
+      return document.getElementById('31');
     } else {
       return document.getElementById(`${counter - 1}`);
     }
@@ -166,14 +142,17 @@ const App = () => {
     clonedObj[column] = toggle;
     //temporary const for setGrid
     const arrayToPassSetGrid = [];
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 16; i++) {
       if (row === i) {
         arrayToPassSetGrid.push(clonedObj);
       } else {
         arrayToPassSetGrid.push(grid[i]);
       }
     }
+    
     setGrid(arrayToPassSetGrid);
+
+    console.log(grid)
   };
 
   //play an individual sound from our array from PlaySounds()
@@ -198,7 +177,7 @@ const App = () => {
     //create an array to hold our sounds for a beat
     let soundArr = [];
     //loop through each instrument in our column
-    for (let j = 0; j < 7; j++) {
+    for (let j = 0; j < 16; j++) {
       //if the square is active e.g. 0,0
       if (grid[j][counter]) {
         //set a temporary variable to hold our soundSrc
@@ -225,7 +204,7 @@ const App = () => {
         // create an array of up to 6 sounds that are then played at the same time
         loop();
         // increments counter based on current tempo
-        if (counter < 15) {
+        if (counter < 31) {
           setCounter((prevState) => ++prevState);
         } else {
           setCounter(0);
@@ -267,6 +246,22 @@ const App = () => {
       return (
         <>
           <td className={isPlaying ? 'hidden' : 'instrument'} />
+          <td className="inactive"></td>
+          <td className="inactive"></td>
+          <td className="inactive"></td>
+          <td className="inactive"></td>
+          <td className="inactive"></td>
+          <td className="inactive"></td>
+          <td className="inactive"></td>
+          <td className="inactive"></td>
+          <td className="inactive"></td>
+          <td className="inactive"></td>
+          <td className="inactive"></td>
+          <td className="inactive"></td>
+          <td className="inactive"></td>
+          <td className="inactive"></td>
+          <td className="inactive"></td>
+          <td className="inactive"></td>
           <td className="inactive"></td>
           <td className="inactive"></td>
           <td className="inactive"></td>
@@ -326,14 +321,8 @@ const App = () => {
         <div id="a">
     
       {hideDrawingPanel}
-
-
-
-
-          {/* <SwatchesPicker color={selectedColor} onChangeComplete={changeColor} />  */}
-
-       
-      <ColorPicker  color={selectedColor} onChangeComplete={changeColor} onSetColor={setColor} />
+{/* <SwatchesPicker color={selectedColor} onChangeComplete={changeColor} />  */}
+<ColorPicker  color={selectedColor} onChangeComplete={changeColor} onSetColor={setColor} />
       <div className={classes.colorSwatchContainer}>
         {colorSwatch.map((color) => (
           <div
@@ -344,32 +333,18 @@ const App = () => {
           />
         ))}
       </div>
-
-    
- 
-    </div>
-
-      </div>
-
-
-
+</div></div>
       <br />
       <table border="0">
-        <tbody>
+        <tbody className="table">
           {playHeadComponent}
           {instrumentRows}
-          <BeatLabel />
+         
         </tbody>
       </table>
     </div>
 
-    <p className={classes.chatString}>
-        {/* eslint-disable-next-line */}
-        !rgb
-        {' '}
-        {chatString}
-      </p>
-      console.log({chatString})
+
     </Fragment>
   );
 
