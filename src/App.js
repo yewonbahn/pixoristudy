@@ -1,27 +1,28 @@
 import React, { useEffect, useState ,useMemo} from 'react';
+import { Button } from '@material-ui/core';
+
 import './styles/index.css';
 import './styles/playhead.css';
 import BeatMachine from './Components/BeatMachine';
 import InstrumentRow from './Components/InstrumentRow';
 import Bpm from './helpers/useBPM';
 import BeatLabel from './Components/BeatLabel';
+import CreateNft from './Components/CreateNft.jsx';
 import Tempo from './Components/Tempo';
 import { instruments, getBassNote } from './helpers/instruments';
 import PlayButton from './Components/PlayButton';
 import StopButton from './Components/StopButton';
+
 import Volume from './Components/Volume';
 import { Howl } from 'howler';
 import Editor from "./Editor";
 import useStyles from './App.styles';
 import Colorbutton from "./colorbutton";
 import { Fragment } from 'react';
-import { CirclePicker } from "react-color";
-import DrawingPanel from "./DrawingPanel";
-import { SketchPicker } from 'react-color';
-import { SwatchesPicker } from 'react-color';
-import ColorPicker from './Components/ColorPicker.js';
-import Grid from './Components/Grid';
 
+import ColorPicker from './Components/ColorPicker.js';
+
+const arr1= Array.from(Array(16), () => new Array(32).fill(0));
 const offCell = {
   on: false,
   color: '#000000',
@@ -31,6 +32,8 @@ const initialCells = Array.from({ length: 40 }, () => offCell);
 const App = () => {
 
   const [hideDrawingPanel, setHideDrawingPanel] = useState(true);
+
+
   const [cells, setCells] = useState(initialCells);
   const [selectedColor, setColor] = useState("000000");
 
@@ -137,7 +140,7 @@ const App = () => {
   };
 
   //handles any changes user makes to instrument grid and updates values accordingly
-  const updateGrid = (row, column, toggle) => {
+  const updateGrid = (row, column, toggle,color) => {
     const clonedObj = { ...grid[row] };
     clonedObj[column] = toggle;
     //temporary const for setGrid
@@ -149,10 +152,11 @@ const App = () => {
         arrayToPassSetGrid.push(grid[i]);
       }
     }
-    
+
+    arr1[row].splice(column,1,color)
     setGrid(arrayToPassSetGrid);
 
-    console.log(grid)
+
   };
 
   //play an individual sound from our array from PlaySounds()
@@ -223,7 +227,7 @@ const App = () => {
       
         key={row}
         row={row}
-        updateGrid={(row, column, toggle) => updateGrid(row, column, toggle)}
+        updateGrid={(row, column, toggle,color) => updateGrid(row, column, toggle,color)}
         instrumentName={instrument.name}
         instrumentSound={instrument.sound}
         pattern={instrument.pattern}
@@ -283,8 +287,14 @@ const App = () => {
     }
 
 
-  };
 
+  };
+  const handleClick = () => {
+    console.log(arr1)
+    alert('Creating NFT!')
+  
+
+  }
   
 
 
@@ -342,9 +352,16 @@ const App = () => {
          
         </tbody>
       </table>
+    
+    <div>
+    <Button
+    style={{ background: "ffffff", padding: '27px' }}
+    
+    onClick={() =>{ handleClick();}}>Create
+      </Button>
     </div>
 
-
+    </div>
     </Fragment>
   );
 

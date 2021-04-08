@@ -3,9 +3,11 @@ import '../styles/index.css';
 import { Howl, Howler } from 'howler';
 import { getBassNote } from '../helpers/instruments'
 import { Fragment } from 'react';
+import CreateNft from './CreateNft'
 const arr1 = Array.from(Array(16), () => new Array(32).fill(0));
 
 const Square = (props) => {
+
   const { selectedColor } = props.color;
 
   const [pixelColor, setPixelColor] = useState("#fff");
@@ -14,7 +16,7 @@ const Square = (props) => {
 
   const [toggle, setToggle] = useState(false);
  
- 
+
 
  
 
@@ -36,9 +38,10 @@ const Square = (props) => {
     setCanChangeColor(false);
     
     // need to pass row, col, toggle back up to the grid in App.js
-    props.updateGrid(props.row, props.column, !toggle);
+
+
+    props.updateGrid(props.row, props.column, !toggle,props.color);
     arr1[props.row].splice(props.column,1,props.color)
-    console.log(arr1)
   }
 
   function resetColor() {
@@ -60,13 +63,14 @@ const Square = (props) => {
     <React.Fragment>
 
     <td className="tCell"
-      style={toggle ? { background: pixelColor, padding: '22px' } : { background: '#fffff7', padding: '22px' }}
+      style={toggle ? { background: pixelColor, padding: '27px' } : { background: '#fffff7', padding: '27px' }}
     
       onClick={() =>{ handleClick();}}
 
       onMouseEnter={changeColorOnHover}
       onMouseLeave={resetColor}/>
       
+   
       </React.Fragment>
  
 

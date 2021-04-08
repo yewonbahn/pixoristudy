@@ -7,14 +7,14 @@
   display: flex;
   font-family: 'Cabin', sans-serif;
   text-align: center;
-  margin: 6rem 0;
+  margin: 9rem 0;
   padding: auto;
   color: white;
 }
 .container {
   padding: 20px;
   margin: auto;
-  width: 60%;
+  width: 80%;
 }
 
 body {
@@ -114,9 +114,3 @@ td.instrument {
   }
 }
 
-.table {
-  position: absolute;
-  left:10px
-
-
-}
