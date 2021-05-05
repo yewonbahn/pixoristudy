@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import '../styles/index.css';
 import { Howl, Howler } from 'howler';
 import { getBassNote } from '../helpers/instruments'
-import { Fragment } from 'react';
-import CreateNft from './CreateNft'
+
+
 const arr1 = Array.from(Array(16), () => new Array(32).fill(0));
 
 const Square = (props) => {
@@ -63,7 +63,7 @@ const Square = (props) => {
     <React.Fragment>
 
     <td className="tCell"
-      style={toggle ? { background: pixelColor, padding: '27px' } : { background: '#fffff7', padding: '27px' }}
+      style={toggle ? { background: pixelColor, padding: '15px' } : { background: '#fffff7', padding: '15px' }}
     
       onClick={() =>{ handleClick();}}
 
