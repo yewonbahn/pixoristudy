@@ -6,7 +6,7 @@ const BarLabel = () => {
 
     return(
       <>
-        <h1>BarLabel</h1>
+        <h5>Pixori</h5>
       </>
     )
   }

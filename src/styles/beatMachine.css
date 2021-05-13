@@ -1,12 +1,9 @@
 .beatMachineTitle {
   font-size: 40px;
-  font-weight: 700;
-  font-family: "Cabin", sans-serif;
+  font-weight: 600;
+  font-family: "Cabin";
+  text-align: "center";
   
-}
-.beat {
-  color: #2e2b2b;
-
 }
 .juice {
   color: #000000;

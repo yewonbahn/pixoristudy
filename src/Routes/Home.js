@@ -6,7 +6,7 @@ import '../styles/playhead.css';
 import BeatMachine from '../Components/BeatMachine';
 import InstrumentRow from '../Components/InstrumentRow';
 import Bpm from '../helpers/useBPM';
-import Router from "../Router";
+
 import Tempo from '../Components/Tempo';
 import { instruments } from '../helpers/instruments';
 import PlayButton from '../Components/PlayButton';
@@ -19,8 +19,7 @@ import ColorPicker from '../Components/ColorPicker.js';
 
 const arr1= Array.from(Array(16), () => new Array(32).fill(0));
 
-
-const App = () => {
+const Home = () => {
 
 
 
@@ -31,7 +30,7 @@ const App = () => {
 
   const [selectedColor, setColor] = useState("000000");
 
-  const classes = useStyles();
+
 
 
 
@@ -272,9 +271,10 @@ const App = () => {
     
     console.log(arr1)
     alert('Creating NFT!')
-    html2canvas(document.body).then(function(canvas) {
-      document.body.appendChild(canvas);
-  });
+    let canvasArray = [];
+   html2canvas(this.captureRef.current).then(canvas =>
+      this.setState({ canvasArray: canvas }),
+    );
 
   }
   
@@ -288,10 +288,10 @@ const App = () => {
   //App returns the composite of our beat machine and components
   return (
     <Fragment>
-      <Router/>
+
     <div className="container">
       <div className="titleImg">
-        <BeatMachine />
+
  
       </div>
       <div className="btnGroup">
@@ -343,4 +343,4 @@ const App = () => {
   
 };
 
-export default App;
+export default Home;
